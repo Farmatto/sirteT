@@ -1,0 +1,16 @@
+This tutorial is from:
+https://www.parallelrealities.co.uk/tutorials/shooter/shooter1.php
+There are a bunch of different files that will be used to hold different
+pcs of the puzzle that is a tetris shooter
+
+common.h    contains common headers
+defs.h      contains definitions such as the size of the window
+draw.c      functions related to drawing and rendering
+draw.h      header file for draw.c
+init.c      functions concerned with setting up SDL
+init.h      header file for init.c
+input.c     handles input such as reading the keyboard
+input.h     header file for input.c
+main.c      where the main loop and program entryy point exists.
+main.h      header file for main.c
+structs.h   object definitions 

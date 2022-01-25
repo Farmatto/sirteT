@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#for i in *.c
+
+clang -lSDL2 window.cpp && ./a.out

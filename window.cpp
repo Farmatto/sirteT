@@ -1,4 +1,4 @@
-// compile with clang -lSDL2 hello_sdl_pxbuf.cpp
+// compile with clang -lSDL2 window.cpp
 // create another file to ask this file to produce what should
 // be shown. use this file as the graphics processor?
 
@@ -16,7 +16,7 @@ int main(int argc, char* args[]) {
     SDL_Window * window = SDL_CreateWindow(
         "hello_sdl_pxbuf",
         SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-        640, 480, SDL_WINDOW_SHOWN
+        480, 480, SDL_WINDOW_SHOWN
     );
     SDL_Surface * surface = SDL_GetWindowSurface(window);
     assert(surface->format->BytesPerPixel == 4);
@@ -29,14 +29,14 @@ int main(int argc, char* args[]) {
 
     while (should_keep_running) {
 
-        // fill the whole screen with megenta
+        // fill the whole screen with greenish.
         for (int y = 0; y < surface->h; y++) {
             for (int x = 0; x < surface->w; x++) {
                 auto pixel = (unsigned char *)surface->pixels + y * surface->pitch + x * 4;
-                pixel[0] = 0xff; // Red
-                pixel[1] = 0x5f; // Green
-                pixel[2] = 0xff; // Blue
-                pixel[3] = 0xff; // Alpha
+                pixel[0] = 0x50; // Red
+                pixel[1] = 0x80; // Green
+                pixel[2] = 0x00; // Blue
+                pixel[3] = 0x00; // Alpha
             }
         }
 
@@ -45,13 +45,14 @@ int main(int argc, char* args[]) {
             for (int box_px_x = 0; box_px_x < 10; box_px_x++) {
                 auto px_x = box_x + box_px_x;
                 auto px_y = box_y + box_px_y;
-
+                
+                // color the box to contrast against main surface.
                 auto pixel = (unsigned char *)surface->pixels + px_y * surface->pitch + px_x * 4;
                 if (px_x >= 0 && px_x < surface->w && px_y >= 0 && px_y < surface->h) {
-                    pixel[0] = 0xff;
-                    pixel[1] = 0xff;
-                    pixel[2] = 0xff;
-                    pixel[3] = 0xff;
+                    pixel[0] = 0x00; //red
+                    pixel[1] = 0x00; //green
+                    pixel[2] = 0x00; //blue
+                    pixel[3] = 0xff; //alpha
                 }
             }
         }
